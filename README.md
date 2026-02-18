@@ -1,3 +1,63 @@
+## Setup and Testing
+
+### 1. Running Tests Locally
+
+To run the tests on your local machine, follow these steps:
+
+1) Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+2) Activate the virtual environment:
+
+**Windows (Git Bash):**
+
+```bash
+source venv/Scripts/activate
+```
+
+**Windows (CMD):**
+
+```cmd
+venv\Scripts\activate
+```
+
+**Mac/Linux:**
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Execute the test suite:
+
+```bash
+pytest -v
+```
+
+### 2. Running Tests with Docker
+
+To run the tests in a clean, isolated container:
+
+1) Build the Docker image:
+
+```bash
+docker build -t ai-experts-assignment .
+```
+
+2) Run the container:
+
+```bash
+docker run --rm ai-experts-assignment
+```
+
 # AI Experts Assignment (Python)
 
 This assignment evaluates your ability to:
