@@ -43,3 +43,14 @@ def test_api_request_refreshes_when_token_is_dict():
     resp = c.request("GET", "/me", api=True)
 
     assert resp["headers"].get("Authorization") == "Bearer fresh-token"
+
+#test case that fails due to the bug (dict input)
+def test_api_request_fails_to_set_header_with_dict_token(): 
+    c = Client()
+    c.oauth2_token = {"access_token": "hidden-key", "expires_at": 10**10}
+
+    resp = c.request("GET", "/me", api=True)
+
+    #this will fail on original code: "Authorization" will be missing from headers
+    assert "Authorization" in resp["headers"]
+    assert resp["headers"]["Authorization"] == "Bearer fresh-token"
